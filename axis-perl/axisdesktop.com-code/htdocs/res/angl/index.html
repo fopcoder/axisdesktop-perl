@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="app">
+    <head>
+        <script src="js/jquery.min.js" ></script>
+        <script src="bootstrap/js/bootstrap.min.js" ></script>
+        <script src="js/angular.min.js" ></script>
+        <script src="js/angular-route.min.js" ></script>
+        
+        <script src="js/app.js"></script>
+        <script src="js/controllers/controllers.js"></script>
+        
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        
+        <style>
+            .row{
+text-align: center;
+background-color: steelblue;
+font-family: "Georgia", serif , sans-serif;
+font-size: 30px;
+}
+        </style>
+        
+    </head>
+    <body>
+        
+        <a href="#/"><button class="btn btn-danger">Homepage</button></a>
+<a href="#/about"><button class="btn btn-success">About</button></a>
+<a href="#/date"><button class="btn btn-warning">Date</button></a>
+
+<div class="row">
+<div ng-view>
+<!-- Views go here -->
+</div >
+</div >
+        
+    </body>
+</html>

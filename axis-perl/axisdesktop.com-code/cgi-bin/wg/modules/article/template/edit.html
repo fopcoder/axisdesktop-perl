@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>&nbsp;</title>
+	<link rel="stylesheet" href="/cgi-bin/wg/modules/base/template/admin.css">   
+	<script type="text/javascript" src="/res/ck/ckeditor.js"></script>
+	<script type="text/javascript" src="/res/jquery/jquery.js"></script>
+	<script>
+		CKEDITOR.config.customConfig = '/cgi-bin/wg/modules/article/template/js/ck_config.js';
+		
+		langs = new Array();
+		
+		function close_all_loc()    {
+			for( i = 0; i < 10; i++ )	{
+				if( document.getElementById('loc_'+i) )	{
+					document.getElementById('loc_'+i).style.display = 'none';
+					document.getElementById('loctd_'+i).style.borderTop = '';
+					document.getElementById('loctd_'+i).style.borderBottom = '1px solid #999';
+					document.getElementById('loctd_'+i).style.background = '#eaeaea';
+				}
+			}
+		}
+
+		function loc_on(div)   {
+			close_all_loc();
+			document.getElementById('loc_'+div).style.display = '';    
+			document.getElementById('loctd_'+div).style.borderTop = '1px solid #777';
+			document.getElementById('loctd_'+div).style.borderBottom = '';
+			document.getElementById('loctd_'+div).style.background = '#ccc';
+		}
+    </script>
+	<script src="/cgi-bin/wg/modules/article/template/js/<TMPL_VAR LANG_NAME>.js"></script>
+	<style>
+	* { font-family: tahoma, arial, sans-serif; font-size: 12px }
+	</style>
+</head>
+
+<body>
+    <form  method=post >
+		<input type="hidden" name="action" value="article_item_update" >
+		<input type="hidden" name="id" value="<TMPL_VAR ID>">
+		<fieldset>
+			<legend><script>document.write(articleLang['tabTitleGeneral'])</script></legend>
+			<table border=0 cellspacing=3 width=100%>
+			<tr>
+				<td width=12%><b><script>document.write(articleLang['labelID'])</script></b></td>
+				<td width=38%><TMPL_VAR ID></td>
+				<td width=12%><b><script>document.write(articleLang['labelOwner'])</script></b></td>
+				<td width=38%><TMPL_VAR USER_NAME></td>
+			</tr>
+			<tr>
+				<td><b><script>document.write(articleLang['labelName'])</script></b></td>
+				<td><input type="text" name="name" value="<TMPL_VAR NAME>" style="width:100%"></td>
+				<td><b><script>document.write(articleLang['labelInserted'])</script></b></td>
+				<td><TMPL_VAR INSERTED></td>
+				
+			</tr>
+			<tr>
+				<td><b><script>document.write(articleLang['labelOrdering'])</script></b></td>
+				<td><input type="text" name="ordering" value="<TMPL_VAR ORDERING>"></td>
+				<td><b><script>document.write(articleLang['labelUpdated'])</script></b></td>
+				<td><TMPL_VAR UPDATED></td>
+			</tr>
+			<tr>
+				<td><b><script>document.write(articleLang['tabTitleFlags'])</script></b></td>
+				<td colspan=5><TMPL_LOOP FLAGS_LOOP><input type="checkbox" <TMPL_IF DELETED>disabled</TMPL_IF> name="flags"  value="<TMPL_VAR NAME>" <TMPL_VAR CHECKED> id="F_<TMPL_VAR NAME>"><script>document.write('<label for="F_<TMPL_VAR NAME>">'+articleLang['<TMPL_VAR NAME>']+'</label>')</script></TMPL_LOOP></td>
+			</tr>
+			<tr>
+				<td colspan=6>
+					<table width=100% cellspacing=5 cellpadding=5 border=0>
+						<tr>
+							<TMPL_LOOP ITEM_L10N>
+								<td align="center" bgcolor="#dddddd" id="loctd_<TMPL_VAR __counter__>"><a href="javascript:void(0)" onclick="loc_on(<TMPL_VAR __counter__>)"><b><TMPL_VAR LANG_ALIAS></b></a></td>
+							</TMPL_LOOP>
+						</tr>
+					</table>
+					<TMPL_LOOP ITEM_L10N>
+						<script>langs[langs.length] = <TMPL_VAR LANG_ID>;</script>
+						<div id="loc_<TMPL_VAR __counter__>" style="display:none">
+							<div style="padding:2px">
+								<div style="width:135px;float:left"><b><script>document.write(articleLang['labelAlias'])</script></b>:</div>
+								<div style="margin-left:135px"><input type="text" name="alias_<TMPL_VAR LANG_ID>" value="<TMPL_VAR ALIAS>" style="width:80%"></div>
+							</div>
+							<div style="padding:2px">
+								<div style="width:135px;float:left"><b><script>document.write('labelTitle')</script></b>:</div>
+								<div style="margin-left:135px"><input type="text" name="title_<TMPL_VAR LANG_ID>" value="<TMPL_VAR TITLE>" style="width:80%"></div>
+							</div>
+							<div style="padding:2px">
+								<div style="width:135px;float:left"><b><script>document.write('keywords')</script></b>:</div>
+								<div style="margin-left:135px"><input type="text" name="keywords_<TMPL_VAR LANG_ID>" value="<TMPL_VAR KEYWORDS>" style="width:80%"></div>
+							</div>
+							<div style="padding:2px">
+								<div style="width:135px;float:left"><b><script>document.write(articleLang['labelDescription'])</script></b>:</div>
+								<div style="margin-left:135px"><textarea style="width:80%" name="description_<TMPL_VAR LANG_ID>"><TMPL_VAR DESCRIPTION></textarea></div>
+							</div>
+							<div>
+								<textarea id="content_<TMPL_VAR LANG_ID>" name="content_<TMPL_VAR LANG_ID>" ><TMPL_VAR CONTENT></textarea>
+								<script>CKEDITOR.replace( 'content_<TMPL_VAR LANG_ID>' );</script>
+							</div>
+						</div>
+					</TMPL_LOOP>
+				</td>
+			</tr>
+			<tr>
+				<td><script>document.write('<input type="submit" name="save" value="'+articleLang['formButtonSave']+'">')</script></td>
+			</tr>
+		</table>
+	</fieldset>
+</form>
+	
+<script>loc_on(1)</script>
+
+<form method=post enctype="multipart/form-data">
+	<input type="hidden" name="savefields" value="1">
+	<input type="hidden" name="id" value="<TMPL_VAR ID>">
+	<fieldset>
+		<legend><script>document.write(articleLang['labelFieldsValues'])</script></legend>
+		<table width=100%>
+			<TMPL_LOOP FIELDS_LOOP>
+				<tr>
+					<td width=150><b><TMPL_VAR ALIAS></b></td>
+					<TMPL_IF TYPE_BOOLEAN>
+						<td><input type="checkbox" name="field_<TMPL_VAR ID>" <TMPL_IF VALUE>checked</TMPL_IF> value="1" ><input type="hidden" name="field_<TMPL_VAR ID>" value="0"></td>
+					</TMPL_IF>
+					<TMPL_IF TYPE_INT>
+						<td><input type="text" name="field_<TMPL_VAR ID>" value="<TMPL_VAR VALUE>" style="width:100%"></td>
+					</TMPL_IF>
+					<TMPL_IF TYPE_DOUBLE>
+						<td><input type="text" name="field_<TMPL_VAR ID>" value="<TMPL_VAR VALUE>" style="width:100%"></td>
+					</TMPL_IF>
+					<TMPL_IF TYPE_STRING>
+						<td><input type="text" name="field_<TMPL_VAR ID>" value="<TMPL_VAR VALUE>"  style="width:100%"></td>
+					</TMPL_IF>
+					<TMPL_IF TYPE_FILE>
+						<td><a href="<TMPL_VAR VALUE>"><TMPL_VAR VALUE></a><input type="file" name="field_<TMPL_VAR ID>" ></td>
+					</TMPL_IF>
+					<TMPL_IF TYPE_REFERENCE>
+						<td>
+							<select multiple name="field_<TMPL_VAR ID>"  style="width:100%;height:100px">
+								<TMPL_LOOP COMBO>
+									<option value="<TMPL_VAR ID>" <TMPL_VAR SELECTED>><TMPL_VAR VALUE></option>
+								</TMPL_LOOP>
+							</select>    
+						</td>
+					<TMPL_ELSE>
+						<TMPL_IF TYPE_TEXT>
+							<td>
+								<textarea name="field_<TMPL_VAR ID>"><TMPL_VAR VALUE></textarea>
+								<script>CKEDITOR.replace( 'field_<TMPL_VAR ID>', { toolbar : 'ArticleField' } )</script>
+							</td>
+						</TMPL_IF>
+					</TMPL_IF>
+				</tr>
+			</TMPL_LOOP>
+			<tr>
+				<td><script>document.write('<input type="submit" name="save" value="'+articleLang['formButtonSave']+'">')</script></td>
+			</tr>
+		</table>
+	</fieldset>
+</form>
+
+
+<fieldset>
+<legend><b><script>document.write(articleLang['tabTitleAccess'])</script></b></legend>
+<form>
+	<input type="hidden" name="id" value="<TMPL_VAR ID>">
+<TMPL_LOOP GROUPS>
+    <p><b><TMPL_VAR NAME></b><br> 
+    <TMPL_LOOP ACCESS>
+	<input type="checkbox" name="access_<TMPL_VAR GROUP_ID>_<TMPL_VAR ID>" value="1" <TMPL_IF VALUE>checked</TMPL_IF> id="a_<TMPL_VAR NAME>"><script>document.write('<label for="a_<TMPL_VAR NAME>">'+articleLang['<TMPL_VAR NAME>']+'</label>')</script> &nbsp;&nbsp;  
+    </TMPL_LOOP>
+</TMPL_LOOP>
+	   <p><script>document.write('<input type="submit" name="save_access" value="'+articleLang['formButtonSave']+'">')</script>
+</form>
+</fieldset>
+
+<script>
+function switch_group( klass )	{
+	$( '.' + klass ).toggle();
+}
+</script>
+
+<a name="files"></a>
+	<form method=post enctype="multipart/form-data">
+
+<fieldset>
+<legend><b><script>document.write(articleLang['tabTitleFiles'])</script></b></legend>
+	<input type="hidden" name="add_file" value="1">
+	<input type="file" name="fileupload">
+	<input type="hidden" name="id" value="<TMPL_VAR ID>">
+	
+	<select name="filetype_id" id="filetype_id">
+<option></option>
+<TMPL_LOOP FILE_TYPES>
+<option value="<TMPL_VAR ID>"><TMPL_VAR ALIAS></option>
+</TMPL_LOOP>
+	</select>	
+<input type="submit" onclick="return check_filetype()">
+</form>
+
+<TMPL_IF FILES_BY_GROUP>
+	
+<form method=post >
+<input type="hidden" name="id" value="<TMPL_VAR ID>">
+
+
+
+<table cellpadding=5 border=0 cellspacing=0>
+<tr>
+	<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th><script>document.write(articleLang['labelType'])</script></td>
+<th><script>document.write(articleLang['labelFile'])</script></td>
+<th><script>document.write(articleLang['labelURL'])</script></td>
+<th><script>document.write(articleLang['labelSize'])</script></th>
+<th><script>document.write(articleLang['labelInserted'])</script></th>
+<th><script>document.write(articleLang['labelOwner'])</script></th>
+<th></th>
+</tr>
+<TMPL_LOOP FILES_BY_GROUP>
+	<tr>
+		<td colspan="10" style="height:1px;background:#ccc;padding:0;margin:0"><img src="/img/spacer.gif" height=1></td>
+	</tr>
+<tr style="background:#eee;font-weight:bold">
+	<td></td>
+<td></td>
+<td></td>
+<td><TMPL_VAR TYPE_NAME></td>
+<td><TMPL_VAR NAME></td>
+<td><TMPL_VAR URL></td>
+<td><TMPL_VAR SIZE></td>
+<td><TMPL_VAR INSERTED></td>
+<td><TMPL_VAR USER_NAME></td>
+<td></td>
+</tr>
+<TMPL_LOOP GROUP_FILES>
+	<tr>
+		<td colspan="10" style="height:1px;background:#ccc;padding:0;margin:0"><img src="/img/spacer.gif" height=1></td>
+	</tr>
+		<TMPL_LOOP FILES>
+			
+	<TMPL_IF PARENT_IMG>
+<tr class="parent_<TMPL_VAR PARENT_IMG>" style="display:none">
+<TMPL_ELSE>
+	<tr>
+		</TMPL_IF>
+	<td><input type="checkbox" name="fid" id="file_<TMPL_VAR ID>" value="<TMPL_VAR ID>"></td>
+	<td><TMPL_IF PREVIEW><img src="<TMPL_VAR SRC>.prev"></TMPL_IF></td>
+	<TMPL_IF PARENT_IMG>
+		<td ></td>
+	<TMPL_ELSE>
+		<td ><a href="javascript:void(0)" onclick="switch_group('parent_<TMPL_VAR ID>')">+</a></td>
+	</TMPL_IF>
+		
+</td>
+
+<td>
+	<TMPL_UNLESS PARENT_IMG>
+<a href="?ordering=up&id=<TMPL_VAR ID>&item_id=<TMPL_VAR ITEM_ID>&type=<TMPL_VAR TYPE>">up</a> /
+<a href="?ordering=down&id=<TMPL_VAR ID>&item_id=<TMPL_VAR ITEM_ID>&type=<TMPL_VAR TYPE>">down</a>
+	</TMPL_UNLESS>
+</td>
+<TMPL_IF PARENT_IMG>
+<td align="right" style="padding-left:10px;border-left:1px solid #000"><TMPL_VAR TYPE_NAME></td>
+<TMPL_ELSE>
+<td><TMPL_VAR TYPE_NAME></td>
+</TMPL_IF>
+<td><a href="<TMPL_VAR SRC>" target="_blank">open</a></td>
+<td><TMPL_VAR SRC></td>
+<td><TMPL_VAR SIZE></td>
+<td><TMPL_VAR INSERTED></td>
+<td><TMPL_VAR USER_ID></td>
+</tr>
+		</TMPL_LOOP>
+	</TMPL_LOOP>
+</TMPL_LOOP>
+</table>
+
+
+<input type="submit" id="delbutton" name="del_file" value="del" onclick="return confirm(articleLang['labelDelete']+'?')">
+<script>document.getElementById('delbutton').value=articleLang['labelDelete']</script>
+</form>
+
+
+
+</TMPL_IF>
+
+</fieldset>
+
+</body>
+</html> 

@@ -1,0 +1,90 @@
+<html>
+<head>
+  <title><TMPL_VAR TITLE></title>
+  
+	<link rel="stylesheet" type="text/css" href="/res/extjs/resources/css/ext-all.css" />
+	<link rel="stylesheet" type="text/css" href="<TMPL_VAR MODULES_DIR>/base/template/css/base.css" />
+	<link rel="stylesheet" type="text/css" href="<TMPL_VAR MODULES_DIR>/base/template/css/Ext.ux.UploadDialog.css" />
+	<TMPL_LOOP CONFIGURATION_ITEMS>
+	<link rel="stylesheet" type="text/css" href="<TMPL_VAR MODULES_DIR>/<TMPL_VAR PREFIX>/template/css/<TMPL_VAR PREFIX>.css" />
+	</TMPL_LOOP>	
+	
+ 	<script type="text/javascript" src="/res/extjs/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="/res/extjs/ext-all-debug.js"></script>
+	
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/<TMPL_VAR LANG_NAME>.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/common.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/base.js"></script>
+	
+	<script type="text/javascript" src="/res/codemirror/js/codemirror.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/CodeMirror.js"></script>
+
+	<script type="text/javascript" src="/res/ck/ckeditor.js"></script>
+<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/Ext.ux.CKEditor.js"></script>
+	
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/Ext.ux.state.TreePanel.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/Ext.ux.util.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/Ext.ux.state.HttpProvider.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/Ext.wg.js"></script>
+	
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/App.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/Desktop.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/Module.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/Notification.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/Shortcut.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/StartMenu.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/TaskBar.js"></script>
+  
+	
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/Ext.ux.UploadDialog.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/Ext.ux.grid.RowExpander.js"></script>
+
+<script>
+Ext.state.Manager.setProvider(new Ext.ux.state.HttpProvider({
+	 url:'<TMPL_VAR MODULES_DIR>/base/index.cgi'
+	,user:'<TMPL_VAR USER_ID>'
+	,session:'session'
+	,id:'http-state-manager-' + <TMPL_VAR USER_ID>
+	,readBaseParams:{cmd:'readState'}
+	,saveBaseParams:{ action:'save_session_state'}
+	,autoRead:false
+//	,logFailure:true
+//	,logSuccess:true
+}));
+Ext.state.Manager.getProvider().initState( <TMPL_VAR USER_SESSION_STATE> );
+Ext.namespace('Ext.ux','AxisDesktop');
+</script>
+
+
+<TMPL_LOOP CONFIGURATION_ITEMS>
+<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/<TMPL_VAR PREFIX>/template/js/<TMPL_VAR LANG_NAME>.js"></script>
+<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/<TMPL_VAR PREFIX>/template/js/<TMPL_VAR PREFIX>.js"></script>
+</TMPL_LOOP>
+
+
+</head>
+<body scroll="no">
+  <script>
+AxisDesktop.App = new Ext.app.App({
+   init : function(){
+      Ext.BLANK_IMAGE_URL = '/img/spacer.gif';
+      Ext.QuickTips.init();
+   },
+   memberInfo: <TMPL_VAR DESKTOP_USER>,
+   modules: <TMPL_VAR DESKTOP_MODULES>,
+   desktopConfig: {
+      appearance: <TMPL_VAR DESKTOP_APPEARANCE>,
+      background: <TMPL_VAR DESKTOP_BACKGROUND>,
+      launchers: <TMPL_VAR DESKTOP_LAUNCHERS>,
+      taskbarConfig: <TMPL_VAR DESKTOP_TASKBAR>
+   }
+});
+  </script>
+
+<div  style="position:absolute; top:0; right:0; width:300px">
+    <a href="http://axisdesktop.com" target="_blank" style="margin:5px; float:right;"><img src="/img/axis-desktop-logo.png" /></a>
+</div>  
+
+</body>
+</html>
+

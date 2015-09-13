@@ -1,0 +1,20 @@
+var profileLang = {
+    moduleShortcutText: 'Профайл'
+    ,moduleShortcutToolTip: '<b>Профайл<\/b><br \/>Здесь вы можете изменять свои регистрационные данные'
+    ,titleMainWindow: 'Профайл'
+    ,labelEmail: 'Email'
+    ,labelPassword: 'Пароль'
+    ,labelRePassword: 'Подтвердить пароль'
+    ,labelLogin: 'Логин'
+    ,labelChangePassword: 'Изменить пароль'
+    ,labelGeneral: 'Общие'
+    ,labelLocalization: 'Локализация'
+    ,labelSave: 'Сохранить'
+    ,labelClose: 'Закрыть'
+    
+    ,msgZeroLength: 'Пустое значение недопустимо'
+    ,msgEmailExists: 'Пользователь с таким email уже есть'
+    ,msgLoginExists: 'Пользователь с таким логином уже есть'
+    ,msgPasswordInvalid: 'Пароль должен быть больше 5 символов'
+    ,msgPasswordNE: 'Пароли не идентичны'
+}

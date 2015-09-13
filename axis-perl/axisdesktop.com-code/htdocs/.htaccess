@@ -1,0 +1,28 @@
+#AddHandler server-parsed .html
+
+RewriteEngine   On
+
+RewriteCond %{HTTP_HOST} ^www\.axisdesktop\.com$ [NC]
+RewriteRule ^(.*)$ http://axisdesktop.com/$1 [R=301,L]
+
+
+RewriteCond     %{REQUEST_FILENAME}  -f
+RewriteRule  ^(.+)  %{REQUEST_FILENAME}  [L]
+
+RewriteRule     favicon.ico  - [L]
+RewriteRule     sitemap.xml  - [L]
+RewriteRule     robots.txt  - [L]
+RewriteRule     file/.*  - [L]
+
+RewriteRule     ^admin      /cgi-bin/wg/index.cgi [L]
+RewriteRule     ^wg      /cgi-bin/wg/index.cgi [L]
+RewriteRule     cgi-bin/.*      - [L]
+RewriteRule     img/.*  - [L]
+RewriteRule     repo/.*  - [L]
+RewriteRule     res/.*  - [L]
+#RewriteRule     robots.txt   - [L]
+#RewriteRule     sitemap.xml   - [L]
+#RewriteRule     favicon.ico  - [L]
+
+RewriteRule     (.*) /cgi-bin/index.cgi [L]
+#RewriteRule     (.*) /cgi-bin/index.fcgi [L]

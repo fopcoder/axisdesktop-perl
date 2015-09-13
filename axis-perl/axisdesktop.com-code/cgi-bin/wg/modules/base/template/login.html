@@ -1,0 +1,53 @@
+<html>
+    <head>
+	<title><TMPL_VAR TITLE></title>
+	<link rel="stylesheet" type="text/css" href="/res/extjs/resources/css/ext-all.css" />
+	<link rel="stylesheet" type="text/css" href="<TMPL_VAR MODULES_DIR>/base/template/css/base.css" />
+	<link rel="stylesheet" type="text/css" href="<TMPL_VAR MODULES_DIR>/base/template/css/login.css" />
+	
+ 	<script type="text/javascript" src="/res/extjs/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="/res/extjs/ext-all.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/common.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/<TMPL_VAR LANG_NAME>.js"></script>
+	<script type="text/javascript" src="<TMPL_VAR MODULES_DIR>/base/template/js/login.js"></script>
+
+
+    </head>
+    <body>
+		<div id="wg-login-panel">
+			<a href="http://axisdesktop.com" target="_blank"><img src="/img/spacer.gif" class="wg-webgears-logo wg-abs-position" /></a>
+			
+			<div class="wg-webgears-benefits wg-abs-position">
+				<p>Система управления контентом CMS AxisDesktop</p>
+				<p>По вопросам приобретения и разработки сайтов обращайтесь <a href="mailto:cms@axisdesktop.com">cms@axisdesktop.com</a></p>
+			</div>
+			
+			<img src="/img/spacer.gif" class="wg-company-logo wg-abs-position" />
+			
+			<div class="wg-company-benefits wg-abs-position">
+				
+				
+			</div>
+			
+			<form method="POST">
+				<input type="hidden" name="action" value="login">
+				<label id="field1-label" class="wg-abs-position" accesskey="e" for="field1"><script>w( 'base', 'labelEmail' )</script></label>
+				<input class="wg-abs-position" type="text" name="email" id="field1" value="" />
+				
+				<label id="field2-label" class="wg-abs-position" accesskey="p" for="field2"><script>w( 'base', 'labelPassword' )</script></label>
+				<input class="wg-abs-position" type="password" name="password" id="field2" value="" />
+				
+				<input id="submitBtn" class="wg-login-submit wg-abs-position x-btn" type="submit" src="/img/spacer.gif" value="Login" />
+				<script>W( "submitBtn", 'base', 'labelLogin' )</script>
+			</form>
+			
+			<div class="wg-login-signup wg-abs-position">
+				<a href="#"><script>w( 'base', 'textSignUp' )</script></a>
+			</div>
+			
+			<div class="wg-login-forgot wg-abs-position">
+				<a href="#"><script>w( 'base', 'textForgotPassword' )</script></a>
+			</div>
+		</div>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>&nbsp;</title>
+	<link rel="stylesheet" href="/cgi-bin/wg/modules/base/template/admin.css">
+	<!--script type="text/javascript" src="/res/ck/ckeditor.js"></script-->
+	<script type="text/javascript" src="/res/codemirror/js/codemirror.js"></script>
+	<script type="text/javascript">
+		//CKEDITOR.config.customConfig = '/cgi-bin/wg/modules/site/template/js/ck_config.js';
+		
+		langs = new Array();
+	
+		function close_all_loc()    {
+			for( i = 0; i < 10; i++ )	{
+			if( document.getElementById('loc_'+i) )	{
+				document.getElementById('loc_'+i).style.display = 'none';
+				document.getElementById('loctd_'+i).style.borderTop = '';
+				document.getElementById('loctd_'+i).style.borderBottom = '1px solid #999';
+				document.getElementById('loctd_'+i).style.background = '#eaeaea';
+			}
+			}
+		}
+		
+		function loc_on(div)   {
+			close_all_loc();
+			document.getElementById('loc_'+div).style.display = '';    
+			document.getElementById('loctd_'+div).style.borderTop = '1px solid #777';
+			document.getElementById('loctd_'+div).style.borderBottom = '';
+			document.getElementById('loctd_'+div).style.background = '#ccc';
+		}
+		
+	    function check_filetype()	{
+			var obj = document.getElementById('filetype_id');
+			if( obj.value )	{
+				return( true );
+			}
+			else	{
+				alert( siteLang['dlgMsgNoFileType'] );
+				return( false );
+			}
+			obj = document.getElementById('fileupload');
+			if( obj.value )	{
+				return( true );
+			}
+			else	{
+				alert( siteLang['dlgMsgNoFile'] );
+				return( false );
+			}
+		}
+		
+		function prepare_form()	{
+			for( i = 0; i < langs.length; i++ )	{
+				var oEditor = eval( "editor"+ langs[i] ) ;
+				if( oEditor )	{
+//					alert( oEditor.getCode() );
+					document.getElementById('content_data_' + langs[i] ).value = oEditor.getCode();
+				}
+			}
+/*
+			for( i = 0; i < langs.length; i++ )	{
+				var oEditor = eval( "CKEDITOR.instances.zcontent_data_"+ langs[i] ) ;
+				if( oEditor )	{
+					//alert( oEditor.getData() );
+					document.getElementById('content_data_' + langs[i] ).value = oEditor.getData() ;
+				}
+			}
+*/
+		}
+	</script>
+	<script src="/cgi-bin/wg/modules/site/template/js/<TMPL_VAR LANG_NAME>.js"></script>
+</head>
+
+<body bgcolor=#f6f6f6 text=#000000 link=#000000 vlink=#000000 alink=#ff9900  >
+<form method=post onsubmit="return prepare_form()">
+	<input type="hidden" name="action" value="site_item_update">
+	<input type="hidden" name="id" value="<TMPL_VAR ID>">
+	<input type="hidden" name="parent_id" value="<TMPL_VAR PARENT_ID>">
+	<input type="hidden" name="path" value="<TMPL_VAR PATH>">
+	<fieldset>
+		<legend><b><script>document.write(siteLang['tabTitleGeneral'])</script></b></legend>
+		<table border=0 cellspacing=3 width=100%>
+			<tr>
+				<td width=12%><b><script>document.write(siteLang['labelID'])</script></b></td>
+				<td width=38%><TMPL_VAR ID></td>
+				<td width=12%><b><script>document.write(siteLang['labelOwner'])</script></b></td>
+				<td width=38%><TMPL_VAR USER_NAME></td>
+			</tr>
+			<tr>
+				<td nowrap><b><script>document.write(siteLang['labelPath'])</script></b></td>
+				<td><TMPL_VAR PATH></td>
+				<td><b><script>document.write(siteLang['labelInserted'])</script></b></td>
+				<td><TMPL_VAR INSERTED></td>
+			</tr>
+			<tr>
+				<td><b><script>document.write(siteLang['labelName'])</script></b></td>
+				<td><input type="text" name="name" value="<TMPL_VAR NAME>" style="width:90%"></td>
+				<td><b><script>document.write(siteLang['labelUpdated'])</script></b></td>
+				<td><TMPL_VAR UPDATED></td>
+			</tr>
+			<tr>
+				<td><b><script>document.write(siteLang['labelOrdering'])</script></b></td>
+				<td><input type="text" name="ordering" value="<TMPL_VAR ORDERING>" style="width:90%"></td>
+				<td nowrap><b><script>document.write(siteLang['labelHandler'])</script></b></td>
+				<td>
+					<select name="handler_id" style="width:90%">
+						<option></option>
+						<TMPL_LOOP HANDLERS>
+							<option value="<TMPL_VAR ID>" <TMPL_VAR SEL>><TMPL_VAR ALIAS></option>
+						</TMPL_LOOP>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td nowrap><b><script>document.write(siteLang['labelCacheTimeout'])</script></b></td>
+				<td><input type="text" name="cache" value="<TMPL_VAR CACHE>" style="width:90%"></td>
+				<td><b><script>document.write(siteLang['tabTitleTemplate'])</script></b></td>
+				<td>
+					<select name="template_id" style="width:90%">
+						<option></option>
+						<TMPL_LOOP TEMPLATES>
+							<option value="<TMPL_VAR ID>" <TMPL_VAR SEL>><TMPL_VAR NAME></option>
+						</TMPL_LOOP>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td><b><script>document.write(siteLang['tabTitleFlags'])</script></b></td>
+				<td colspan=3><TMPL_LOOP FLAGS_LOOP><input type="checkbox" <TMPL_IF DELETED>disabled</TMPL_IF> name="flags"  value="<TMPL_VAR NAME>" <TMPL_VAR CHECKED> id="F_<TMPL_VAR NAME>"><script>document.write('<label for="F_<TMPL_VAR NAME>">'+siteLang['<TMPL_VAR NAME>']+'</label>')</script></TMPL_LOOP></td>
+			</tr>
+			<tr>
+				<td colspan=4>
+					<table width=100% cellspacing=5 cellpadding=5 border=0>
+						<tr>
+							<TMPL_LOOP ITEM_L10N>
+								<td align="center" bgcolor="#dddddd" id="loctd_<TMPL_VAR __counter__>"><a href="javascript:void(0)" onclick="loc_on(<TMPL_VAR __counter__>)"><b><TMPL_VAR LANG_NAME></b></a></td>
+							</TMPL_LOOP>
+						</tr>
+					</table>
+					<TMPL_LOOP ITEM_L10N>
+						<input type="hidden" name="content_<TMPL_VAR LANG_ID>" value="<TMPL_VAR CONTENT>">
+						<script>langs[langs.length] = <TMPL_VAR LANG_ID>;</script>
+						<div id="loc_<TMPL_VAR __counter__>" style="display:none">
+							<div style="padding:2px">
+								<div style="width:135px;float:left"><b><script>document.write(siteLang['tabTitleAlias'])</script></b>:</div>
+								<div style="margin-left:135px"><input type="text" name="alias_<TMPL_VAR LANG_ID>" value="<TMPL_VAR ALIAS>" style="width:100%"></div>
+							</div>
+							<div style="padding:2px">
+								<div style="width:135px;float:left"><b><script>document.write(siteLang['tabTitleTitle'])</script></b>:</div>
+								<div style="margin-left:135px"><input type="text" name="title_<TMPL_VAR LANG_ID>" value="<TMPL_VAR TITLE>" style="width:100%"></div>
+							</div>
+							<div style="padding:2px">
+								<div style="width:135px;float:left"><b><script>document.write(siteLang['tabTitleKeywords'])</script></b>:</div>
+								<div style="margin-left:135px"><input type="text" name="keywords_<TMPL_VAR LANG_ID>" value="<TMPL_VAR KEYWORDS>" style="width:100%"></div>
+							</div>
+							<div style="padding:2px">	
+								<div style="width:135px;float:left"><b><script>document.write(siteLang['tabTitleDescription'])</script></b>:</div>
+								<div style="margin-left:135px"><input type="text" name="description_<TMPL_VAR LANG_ID>" value="<TMPL_VAR DESCRIPTION>" style="width:100%"></div>
+							</div>
+							<TMPL_IF CKEDITOR1>
+								<div>
+									<textarea id="zcontent_data_<TMPL_VAR LANG_ID>" name="zcontent_data_<TMPL_VAR LANG_ID>" ><TMPL_VAR CONTENT_DATA></textarea>
+									<input type="hidden" value="" id="content_data_<TMPL_VAR LANG_ID>" name="content_data_<TMPL_VAR LANG_ID>" >
+									<script>CKEDITOR.replace( 'zcontent_data_<TMPL_VAR LANG_ID>' ); </script>
+								</div>
+							<TMPL_ELSE>
+								<div style="width:100%;height:300px;border:1px solid #aaa;background:white">
+									<textarea id="zcontent_data_<TMPL_VAR LANG_ID>" name="zcontent_data_<TMPL_VAR LANG_ID>"  style="width:100%;height:300px;border:1px solid #aaa;background:white"><TMPL_VAR CONTENT_DATA></textarea>
+									<input type="hidden" value="" id="content_data_<TMPL_VAR LANG_ID>" name="content_data_<TMPL_VAR LANG_ID>" >
+									<script>
+										var editor<TMPL_VAR LANG_ID> = new CodeMirror.fromTextArea( "zcontent_data_<TMPL_VAR LANG_ID>", {
+											parserfile: ["tokenizejavascript.js", "parsejavascript.js","parsecss.js", "parsexml.js","parsehtmlmixed.js"],
+											path: "/res/codemirror/js/",
+											stylesheet: ["/res/codemirror/css/xmlcolors.css", "/res/codemirror/css/jscolors.css", "/res/codemirror/css/csscolors.css"]
+											//    lineNumbers: true
+										});
+									</script>
+								</div>
+							</TMPL_IF>
+
+						</div>
+					</TMPL_LOOP>
+				</td>
+			</tr>
+			<tr>
+				<td><script>document.write('<input type="submit" name="save" value="'+siteLang['formButtonSave']+'">')</script></td>
+			</tr>
+		</table>
+	</fieldset>
+</form>
+
+<script>loc_on(1)</script>
+
+<form method="POST">
+	<input type="hidden" name="id" value="<TMPL_VAR ID>">
+	<fieldset>
+		<legend><b><script>document.write(siteLang['tabTitleHistory'])</script></b></legend>
+		<select name="history" >
+			<option></option>
+			<TMPL_LOOP HISTORY>
+				<option value="<TMPL_VAR INSERTED>"><TMPL_VAR INSERTED> => <TMPL_VAR USER_ID> </option>
+			</TMPL_LOOP>
+		</select>
+	</fieldset>
+</form>
+
+<form method="POST">
+	<input type="hidden" name="id" value="<TMPL_VAR ID>">
+	<fieldset>
+		<legend><b><script>document.write(siteLang['tabTitleAccess'])</script></b></legend>
+		<TMPL_LOOP GROUPS>
+			<p><b><TMPL_VAR NAME></b> <br> 
+			<TMPL_LOOP ACCESS>
+				<input type="checkbox" name="access_<TMPL_VAR GROUP_ID>_<TMPL_VAR ID>" value="1" <TMPL_IF VALUE>checked</TMPL_IF> id="a_<TMPL_VAR NAME>"><script>document.write('<label for="a_<TMPL_VAR NAME>">'+siteLang['<TMPL_VAR NAME>']+'</label>')</script> &nbsp;&nbsp;  
+			</TMPL_LOOP>
+		</TMPL_LOOP>
+		<p><script>document.write('<input type="submit" name="save_access" value="'+siteLang['formButtonSave']+'">')</script>
+	</fieldset>
+</form>
+
+<a name="files"></a>
+<fieldset>
+<legend><b><script>document.write(siteLang['tabTitleFiles'])</script></b></legend>
+<form method=post enctype="multipart/form-data">
+	<input type="hidden" name="id" value="<TMPL_VAR ID>">
+	<input type="hidden" name="add_file" value="1">
+	<input type="file" name="fileupload">
+	<select name="filetype_id" id="filetype_id">
+		<option></option>
+		<TMPL_LOOP FILE_TYPES>
+			<option value="<TMPL_VAR ID>"><TMPL_VAR ALIAS></option>
+		</TMPL_LOOP>
+	</select>	
+	<input type="submit" onclick="return check_filetype()">
+	<!--input type="checkbox" name="overwrite" value="1"> <script>document.write(siteLang['labelOverwrite'])</script-->
+</form>
+<form method=post >
+<input type="hidden" name="id" value="<TMPL_VAR ID>">
+
+<TMPL_IF FILE_LIST>
+	<table cellpadding=5 border=0>
+		<tr>
+			<th></th>
+			<th><script>document.write(siteLang['labelType'])</script></td>
+			<th><script>document.write(siteLang['labelFile'])</script></td>
+			<th><script>document.write(siteLang['labelURL'])</script></td>
+			<th><script>document.write(siteLang['labelFrom'])</script></th>
+			<th><script>document.write(siteLang['labelSize'])</script></th>
+			<th><script>document.write(siteLang['labelInserted'])</script></th>
+			<th><script>document.write(siteLang['labelOwner'])</script></th>
+		</tr>
+		<TMPL_LOOP FILE_LIST>
+			<tr>
+				<td><input type="checkbox" name="fid" id="file_<TMPL_VAR ID>" value="<TMPL_VAR ID>"></td>
+				<td><TMPL_VAR TYPE_NAME></td>
+				<td><a href="<TMPL_VAR URL>" target="_blank"><TMPL_VAR NAME></a></td>
+				<td><TMPL_VAR URL></td>
+				<td><TMPL_VAR PARENT_NAME></td>
+				<td><TMPL_VAR SIZE></td>
+				<td><TMPL_VAR INSERTED></td>
+				<td><TMPL_VAR USER_NAME></td>
+			</tr>
+		</TMPL_LOOP>
+	</table>
+</TMPL_IF>
+<input type="submit" id="delbutton" name="del_file" value="del" onclick="return confirm(siteLang['labelDelete']+'?')">
+<script>document.getElementById('delbutton').value=siteLang['labelDelete']</script>
+</form>	
+</fieldset>
+</body>
+</html> 

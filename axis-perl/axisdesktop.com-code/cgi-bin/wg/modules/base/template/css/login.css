@@ -1,0 +1,53 @@
+p { margin:12px 0; }
+a { color:#000; }
+input, textarea { font-family:verdana,tahoma,arial,verdana,sans-serif; padding:3px;  }
+
+#submitBtn { font-size:14px; }
+
+#wg-login-panel {
+    background: #7ad url(/cgi-bin/wg/modules/base/template/img/bg-panel.jpg) no-repeat;
+    height: 330px;
+    width: 700px;
+}
+.wg-abs-position { position:absolute; }
+.wg-webgears-logo {
+    background: transparent url(/img/axis-desktop-logo.png) no-repeat center center;
+    height: 80px;
+    left: 0px;
+    top: 0px;
+    width: 350px;
+}
+.wg-webgears-benefits {
+    left: 20px;
+    top: 70px;
+    width: 300px;
+}
+.wg-company-logo {
+    background:transparent url(/img/company-logo.png) no-repeat center center;
+    height: 80px;
+    left: 350px;
+    top: 0px;
+    width: 350px;
+}
+.wg-company-benefits {
+    left: 370px;
+    top: 70px;
+    width: 300px;
+}
+.key { text-decoration:underline; }
+.wg-login-signup { left:20px; top:200px; font-size:14px; }
+.wg-login-signup a { color:#000; }
+.wg-login-forgot { left:20px; top:235px; font-size:14px; }
+.wg-login-forgot a { color:#000; }
+#field1-label { left:370px; top:200px; font-size:14px; }
+#field1 { left:440px; top:198px; width:220px; font-size:14px;  }
+#field2-label { left:370px; top:235px; font-size:14px; }
+#field2 { left:440px; top:233px; width:220px; font-size:14px;  }
+.wg-login-submit {
+    background: #acf;
+    height: 25px;
+    left: 370px;
+    top: 270px;
+    width: 300px;
+    border: 1px solid #aaa;
+}

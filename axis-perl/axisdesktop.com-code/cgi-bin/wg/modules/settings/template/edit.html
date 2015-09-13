@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>&nbsp;</title>
+<link rel="stylesheet" href="/cgi-bin/wg/modules/base/template/admin.css">   
+
+	<script>
+langs = new Array();
+
+	    </script>
+
+
+<script src="/cgi-bin/wg/modules/settings/template/js/<TMPL_VAR LANG_NAME>.js"></script>
+
+
+</head>
+
+<body>
+
+    <form>
+	<input type="hidden" name="action" value="settings_item_update" >
+	<input type="hidden" name="id" value="<TMPL_VAR ID>">
+<fieldset>
+<legend><script>document.write(settingsLang['tabTitleGeneral'])</script></legend>
+   <table>
+       <tr>
+	   <td width=10%><b><script>document.write(settingsLang['labelID'])</script></b></td>
+	   <td><TMPL_VAR ID></td>
+	</tr>
+	<tr>
+	   <td width=10%><b><script>document.write(settingsLang['labelInserted'])</script></b></td>
+	   <td><TMPL_VAR INSERTED></td>
+	   <td><b><script>document.write(settingsLang['labelOwner'])</script></b></td>
+	   <td colspan=3><TMPL_VAR USER_NAME></td>
+	</tr>
+	<tr>
+	   <td width=10%><b><script>document.write(settingsLang['labelUpdated'])</script></b></td>
+	   <td><TMPL_VAR UPDATED></td>
+	   <td width=10%><b><script>document.write(settingsLang['labelOrdering'])</script></b></td>
+	   <td><input type="text" name="ordering" value="<TMPL_VAR ORDERING>"></td>
+       </tr>
+       <tr>
+	   <td><b><script>document.write(settingsLang['tabTitleFlags'])</script></b></td>
+	   <td colspan=5><TMPL_LOOP FLAGS_LOOP><input type="checkbox" <TMPL_IF DELETED>disabled</TMPL_IF> name="flags"  value="<TMPL_VAR NAME>" <TMPL_VAR CHECKED> id="F_<TMPL_VAR NAME>"><script>document.write('<label for="F_<TMPL_VAR NAME>">'+settingsLang['<TMPL_VAR NAME>']+'</label>')</script></TMPL_LOOP></td>
+       </tr>
+       <tr>
+	   <td><b><script>document.write(settingsLang['labelName'])</script></b></td>
+	   <td colspan=5><input type="text" name="name" value="<TMPL_VAR NAME>" style="width:100%"></td>
+       </tr>
+
+
+
+<script>
+function close_all_loc()    {
+    for( i = 0; i < 10; i++ )	{
+	if( document.getElementById('loc_'+i) )	{
+	    document.getElementById('loc_'+i).style.display = 'none';
+	    document.getElementById('loctd_'+i).style.borderTop = '';
+	    document.getElementById('loctd_'+i).style.borderBottom = '1px solid #999';
+	    document.getElementById('loctd_'+i).style.background = '#eaeaea';
+	}
+    }
+}
+
+function loc_on(div)   {
+    close_all_loc();
+    document.getElementById('loc_'+div).style.display = '';    
+    document.getElementById('loctd_'+div).style.borderTop = '1px solid #777';
+    document.getElementById('loctd_'+div).style.borderBottom = '';
+    document.getElementById('loctd_'+div).style.background = '#ccc';
+}
+</script>
+<tr>
+<td colspan=6>
+<table width=100% cellspacing=5 cellpadding=5 border=0>
+<tr>
+<TMPL_LOOP ITEM_L10N>
+<td align="center" bgcolor="#dddddd" id="loctd_<TMPL_VAR __counter__>"><a href="javascript:void(0)" onclick="loc_on(<TMPL_VAR __counter__>)"><b><TMPL_VAR LANG_ALIAS></b></a></td>
+</TMPL_LOOP>
+</tr>
+</table>
+<TMPL_LOOP ITEM_L10N>
+<script>
+langs[langs.length] = <TMPL_VAR LANG_ID>;
+</script>
+<div id="loc_<TMPL_VAR __counter__>" style="display:none">
+<b><script>document.write(settingsLang['labelAlias'])</script></b>: <input type="text" name="alias_<TMPL_VAR LANG_ID>" value="<TMPL_VAR ALIAS>" style="width:80%"><br>
+</div>
+</TMPL_LOOP>
+
+</td>
+</tr>
+
+<script>loc_on(1)</script>
+
+
+
+
+       <tr>
+	   <td><script>document.write('<input type="submit" name="save" value="'+settingsLang['formButtonSave']+'">')</script></td>
+       </tr>
+
+   </table>
+</fieldset>
+</form>
+
+
+    <form method=post enctype="multipart/form-data">
+	<input type="hidden" name="savefields" value="1">
+	<input type="hidden" name="id" value="<TMPL_VAR ID>">
+<fieldset>
+<legend><script>document.write(settingsLang['labelFieldsValues'])</script></legend>
+   <table width=100%>
+       <TMPL_LOOP FIELDS_LOOP>
+       <tr>
+	   <td width=150><b><TMPL_VAR ALIAS></b></td>
+		<TMPL_IF TYPE_BOOLEAN>
+	   		<td><input type="text" name="field_<TMPL_VAR ID>" value="<TMPL_VAR VALUE>"  style="width:100%"></td>
+		</TMPL_IF>
+		<TMPL_IF TYPE_INT>
+	   		<td><input type="text" name="field_<TMPL_VAR ID>" value="<TMPL_VAR VALUE>" style="width:100%"></td>
+		</TMPL_IF>
+		<TMPL_IF TYPE_DOUBLE>
+	   		<td><input type="text" name="field_<TMPL_VAR ID>" value="<TMPL_VAR VALUE>"  style="width:100%"></td>
+		</TMPL_IF>
+		<TMPL_IF TYPE_STRING>
+	   		<td><input type="text" name="field_<TMPL_VAR ID>" value="<TMPL_VAR VALUE>"  style="width:100%"></td>
+		</TMPL_IF>
+		<TMPL_IF TYPE_FILE>
+	   		<td><a href="<TMPL_VAR VALUE>"><TMPL_VAR VALUE></a><input type="file" name="field_<TMPL_VAR ID>" ></td>
+		</TMPL_IF>
+		
+	   <TMPL_IF TYPE_REFERENCE>
+	   <td>
+	   <select multiple name="field_<TMPL_VAR ID>"  style="width:100%;height:100px">
+	       <TMPL_LOOP COMBO>
+	       <option value="<TMPL_VAR ID>" <TMPL_VAR SELECTED>><TMPL_VAR VALUE></option>
+	       </TMPL_LOOP>
+	   </select>    
+	   </td>
+	   <TMPL_ELSE>
+	   <TMPL_IF TYPE_TEXT>
+	   <td><textarea style="width:100%" rows="15" name="field_<TMPL_VAR ID>"><TMPL_VAR VALUE></textarea></td>
+	   </TMPL_IF>
+	   </TMPL_IF>
+       </tr>
+    </TMPL_LOOP>
+       <tr>
+	   <td><script>document.write('<input type="submit" name="save" value="'+settingsLang['formButtonSave']+'">')</script></td>
+       </tr>
+    </table>
+</fieldset>
+    </form>
+   <!--hr>
+
+   slave settingss
+   <br>
+
+   <TMPL_LOOP SLAVES>
+   <b><TMPL_VAR NAME></b> - <a href="javascript:void(0)" onclick="addItem(<TMPL_VAR ID>)">add item</a><br>
+   <div id="slave_<TMPL_VAR ID>" width="100%" height="100" style="background-color:white;"></div>
+	    <script>
+		xml_url_<TMPL_VAR ID> = '<TMPL_VAR SCRIPT>?&config_header=1&grid=1&parent_id=<TMPL_VAR ID>&item_id=<TMPL_VAR ITEM_ID>';
+		grid_<TMPL_VAR ID> = new dhtmlXGridObject('slave_<TMPL_VAR ID>');
+		grid_<TMPL_VAR ID>.setImagePath("<TMPL_VAR SCRIPT_DIR>/template/img/");
+		grid_<TMPL_VAR ID>.init();
+//mygrid.splitAt(2);
+		grid_<TMPL_VAR ID>.enableSmartRendering(true,<TMPL_VAR ROWSC>,25);
+
+		grid_<TMPL_VAR ID>.setSizes();
+		grid_<TMPL_VAR ID>.loadXML(xml_url_<TMPL_VAR ID>);
+   </script>
+   <TMPL_LOOP SLAVE>
+   <TMPL_VAR ALIAS><br>
+    </TMPL_LOOP>
+
+   <br>
+   </TMPL_LOOP>
+
+-->
+
+
+<fieldset>
+<legend><b><script>document.write(settingsLang['tabTitleAccess'])</script></b></legend>
+<form>
+	<input type="hidden" name="id" value="<TMPL_VAR ID>">
+<TMPL_LOOP GROUPS>
+    <p><b><TMPL_VAR NAME></b><br> 
+    <TMPL_LOOP ACCESS>
+	<input type="checkbox" name="access_<TMPL_VAR GROUP_ID>_<TMPL_VAR ID>" value="1" <TMPL_IF VALUE>checked</TMPL_IF> id="a_<TMPL_VAR NAME>"><script>document.write('<label for="a_<TMPL_VAR NAME>">'+settingsLang['<TMPL_VAR NAME>']+'</label>')</script> &nbsp;&nbsp;  
+    </TMPL_LOOP>
+</TMPL_LOOP>
+	   <p><script>document.write('<input type="submit" name="save_access" value="'+settingsLang['formButtonSave']+'">')</script>
+</form>
+</fieldset>
+
+
+	<form method=post enctype="multipart/form-data">
+
+<fieldset>
+<legend><b><script>document.write(settingsLang['tabTitleFiles'])</script></b></legend>
+	<input type="hidden" name="add_file" value="1">
+	<input type="file" name="fileupload">
+	<input type="hidden" name="id" value="<TMPL_VAR ID>">
+	
+	<select name="filetype_id" id="filetype_id">
+<option></option>
+<TMPL_LOOP FILE_TYPES>
+<option value="<TMPL_VAR ID>"><TMPL_VAR ALIAS></option>
+</TMPL_LOOP>
+	</select>	
+<input type="submit" onclick="return check_filetype()">
+</form>
+<form method=post >
+<input type="hidden" name="id" value="<TMPL_VAR ID>">
+
+<TMPL_IF FILE_LIST>
+<table cellpadding=5 border=0>
+<tr>
+<th></th>
+<th><script>document.write(settingsLang['labelType'])</script></td>
+<th><script>document.write(settingsLang['labelFile'])</script></td>
+<th><script>document.write(settingsLang['labelURL'])</script></td>
+<th><script>document.write(settingsLang['labelFrom'])</script></th>
+<th><script>document.write(settingsLang['labelSize'])</script></th>
+<th><script>document.write(settingsLang['labelInserted'])</script></th>
+<th><script>document.write(settingsLang['labelOwner'])</script></th>
+</tr>
+<TMPL_LOOP FILE_LIST>
+<tr>
+<td><input type="checkbox" name="fid" id="file_<TMPL_VAR ID>" value="<TMPL_VAR ID>"></td>
+<td><TMPL_VAR TYPE_NAME></td>
+<td><a href="<TMPL_VAR URL>" target="_blank"><TMPL_VAR NAME></a></td>
+<td><TMPL_VAR URL></td>
+<td><TMPL_VAR PARENT_NAME></td>
+<td><TMPL_VAR SIZE></td>
+<td><TMPL_VAR INSERTED></td>
+<td><TMPL_VAR USER_NAME></td>
+</tr>
+</TMPL_LOOP>
+</table>
+</TMPL_IF>
+<input type="submit" id="delbutton" name="del_file" value="del" onclick="return confirm(settingsLang['labelDelete']+'?')">
+<script>document.getElementById('delbutton').value=settingsLang['labelDelete']</script>
+</fieldset>
+
+</body>
+</html> 

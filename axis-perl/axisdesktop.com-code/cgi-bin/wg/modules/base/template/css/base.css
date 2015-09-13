@@ -1,0 +1,751 @@
+/*
+
+#dpanels {
+	width: 250px;
+	float: right;
+}
+#dpanels .x-panel {
+	margin: 15px;
+}
+#dpanels .x-date-picker {
+	border: 0 none;
+	border-top: 0 none;
+	background: transparent;
+}
+#dpanels .x-date-picker td.x-date-active {
+	background: #ffffff;
+}
+#dpanels .x-date-picker {
+	width: 100% !important;
+}
+
+#ux-taskbar-start .x-btn {
+	margin: 0;
+}
+
+#title-bar-wrapper {
+	height:35px;
+}
+#title-bar {
+	color: #225599;
+	padding: 9px 7px;
+	font: bold 16px tahoma,arial,verdana,sans-serif;
+	float:left;
+}
+#x-logout {
+	float:right;
+	padding:6px 7px;
+}
+.x-btn-text-icon .x-btn-center .logout {
+	background-position:0pt 3px;
+	background-repeat:no-repeat;
+	padding:3px 0pt 3px 18px;
+}
+
+.x-btn-icon .ux-taskbutton-center .x-btn-text{
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 16px;
+	width: 16px;
+	cursor:pointer;
+	white-space: nowrap;
+    padding:0;
+}
+.x-btn-icon .ux-taskbutton-center{
+	padding:1px;
+}
+.x-btn-text-icon .ux-taskbutton-center .x-btn-text{
+	background-position: 0 6px;
+	background-repeat: no-repeat;
+	padding:7px 0px 7px 20px;
+}
+.x-btn-text-icon .ux-startbutton-center .x-btn-text{
+	background-position: 0 4px;
+	background-repeat: no-repeat;
+	color:#000000 !important;
+	font-weight:bold;
+	padding:7px 0px 7px 28px;
+}
+
+
+#spacer {
+	height: 25px;
+	float: left;
+	width: 0;
+	overflow: hidden;
+	margin-top: 2px;
+}
+
+.x-window-body p,.x-panel-body p {
+	padding: 10px;
+	margin: 0;
+}
+
+.x-window-maximized .x-window-bc {
+	height:0;
+}
+
+
+.ux-start-menu {
+	background:transparent none;
+	border:0px none;
+	padding:0;
+}
+.ux-start-menu-tl .x-window-header {
+	color:#f1f1f1;
+	font:bold 11px tahoma,arial,verdana,sans-serif;
+    padding:5px 0 4px 0;
+}
+.x-panel-tl .x-panel-icon, .ux-start-menu-tl .x-panel-icon {
+	background-position:0pt 4px;
+	background-repeat:no-repeat;
+	padding-left:20px !important;
+}
+.ux-start-menu-tl {
+	background: transparent url( /cgi-bin/wg/modules/base/template/img/start-menu-left-corners.png ) no-repeat 0 0;
+	padding-left:6px;
+    zoom:1;
+    z-index:1;
+    position:relative;
+}
+.ux-start-menu-tr {
+	background: transparent url( /cgi-bin/wg/modules/base/template/img/start-menu-right-corners.png ) no-repeat right 0;
+	padding-right:6px;
+}
+.ux-start-menu-tc {
+	background: transparent url( /cgi-bin/wg/modules/base/template/img/start-menu-top-bottom.png ) repeat-x 0 0;
+	overflow:hidden;
+    zoom:1;
+}
+.ux-start-menu-ml {
+	background: transparent url( /cgi-bin/wg/modules/base/template/img/start-menu-left-right.png ) repeat-y 0 0;
+	padding-left:6px;
+    zoom:1;
+}
+.ux-start-menu-bc {
+	background: transparent url( /cgi-bin/wg/modules/base/template/img/start-menu-top-bottom.png ) repeat-x 0 bottom;
+    zoom:1;
+}
+.ux-start-menu-bc .x-window-footer {
+    padding-bottom:6px;
+    zoom:1;
+    font-size:0;
+    line-height:0;
+}
+.ux-start-menu-bl {
+	background: transparent url( /cgi-bin/wg/modules/base/template/img/start-menu-left-corners.png ) no-repeat 0 bottom;
+	padding-left:6px;
+    zoom:1;
+}
+.ux-start-menu-br {
+	background: transparent url( /cgi-bin/wg/modules/base/template/img/start-menu-right-corners.png ) no-repeat right bottom;
+	padding-right:6px;
+    zoom:1;
+}
+.x-panel-nofooter .ux-start-menu-bc {
+	height:6px;
+}
+.ux-start-menu-splitbar-h {
+	background-color:#d0d0d0;
+}
+.ux-start-menu-bwrap {
+	background:transparent none;
+	border:0px none;
+}
+.ux-start-menu-body {
+	background:transparent none;
+	border:0px none;
+}
+.ux-start-menu-apps-panel {
+	background:#ffffff none;
+	border:1px solid #1e2124;
+}
+.ux-start-menu-tools-panel {
+	border:0px none;
+	background:transparent url( /cgi-bin/wg/modules/base/template/img/start-menu-right.png ) repeat-y scroll right 0pt;
+}
+#ux-taskbar-start {
+	background:#000000 url( /cgi-bin/wg/modules/base/template/img/taskbar-start-panel-bg.gif ) repeat-x left top;
+	left:0px;
+	padding:0;
+	position:absolute;
+}
+#ux-taskbar-start .x-toolbar {
+	background: none;
+	padding:0px;
+	border:0px none;
+}
+#ux-taskbuttons-panel {
+	background:#000000 url( /cgi-bin/wg/modules/base/template/img/taskbuttons-panel-bg.gif ) repeat-x left top;
+	padding-top:0;
+	position:relative;
+}
+.ux-taskbuttons-strip-wrap {
+	width:100%;
+    overflow:hidden;
+    position:relative;
+    zoom:1;
+}
+ul.ux-taskbuttons-strip {
+	display:block;
+	width:5000px;
+    zoom:1;
+}
+ul.ux-taskbuttons-strip li {
+    float:left;
+    margin-left:2px;
+}
+ul.ux-taskbuttons-strip li.ux-taskbuttons-edge {
+    float:left;
+    margin:0 !important;
+    padding:0 !important;
+    border:0 none !important;
+    font-size:1px !important;
+    line-height:1px !important;
+    overflow:hidden;
+    zoom:1;
+    background:transparent !important;
+    width:1px;
+}
+.x-clear {
+    clear:both;
+    height:0;
+    overflow:hidden;
+    line-height:0;
+    font-size:0;
+}
+.x-taskbuttons-scrolling {
+	position:relative;
+}
+
+.x-taskbuttons-scrolling .ux-taskbuttons-strip-wrap {
+	margin-left:18px;
+	margin-right:18px;
+}
+
+td.ux-taskButtons-edge {
+    margin:0 !important;
+    padding:0 !important;
+    border:0 none !important;
+    font-size:1px !important;
+    line-height:1px !important;
+    overflow:hidden;
+    zoom:1;
+    background:transparent !important;
+    width:1px;
+}
+
+.ux-taskbuttons-scroller-left {
+    background: transparent url( /cgi-bin/wg/modules/base/template/img/scroll-left.gif ) no-repeat -18px 0;
+    width:18px;
+    position:absolute;
+    left:1px;
+    top:0px;
+    z-index:10;
+    cursor:pointer;
+}
+.ux-taskbuttons-scroller-left-over {
+    background-position: 0 0;
+}
+.ux-taskbuttons-scroller-left-disabled {
+    background-position: -18px 0;
+    opacity:.5;
+    -moz-opacity:.5;
+    filter:alpha(opacity=50);
+    cursor:default;
+}
+.ux-taskbuttons-scroller-right {
+    background: transparent url( /cgi-bin/wg/modules/base/template/img/scroll-right.gif ) no-repeat 0 0;
+    width:18px;
+    position:absolute;
+    right:0;
+    top:0px;
+    z-index:10;
+    cursor:pointer;
+}
+.ux-taskbuttons-scroller-right-over {
+    background-position: -18px 0;
+}
+.ux-taskbuttons-scroller-right-disabled {
+    background-position: 0 0;
+    opacity:.5;
+    -moz-opacity:.5;
+    filter:alpha(opacity=50);
+    cursor:default;
+}
+.ux-toolmenu-sep {
+	background-color:#18191a;
+	border-bottom:1px solid #858789;
+	display:block;
+	font-size:1px;
+	line-height:1px;
+	margin:2px 3px;
+}
+.ux-start-menu-tools-panel ul.x-menu-list li.x-menu-list-item a.x-menu-item {
+	color:#ffffff;
+}
+.ux-start-menu-tools-panel ul.x-menu-list li.x-menu-list-item .x-menu-item-active a.x-menu-item {
+	color:#000000;
+}
+.ux-start-menu-tools-panel .x-menu-item-active {
+	background: #525456 url( /cgi-bin/wg/modules/base/template/img/item-over.gif ) repeat-x left bottom;
+	border:1px solid #000000;
+	padding: 0;
+}
+#ux-taskbar .x-splitbar-h {
+	background:#000000 url( /cgi-bin/wg/modules/base/template/img/taskbar-split-h.gif ) no-repeat 0 0;
+	width:8px;
+}
+.x-window-header-text {
+	cursor:default;
+}
+
+.ux-startbutton-left, .ux-startbutton-right{
+	font-size:1px;
+    line-height:1px;
+}
+.ux-startbutton-left{
+	width:10px;
+	height:28px;
+	background:url( /cgi-bin/wg/modules/base/template/img/startbutton.gif ) no-repeat 0 0;
+}
+.ux-startbutton-right{
+	width:10px;
+	height:30px;
+	background:url( /cgi-bin/wg/modules/base/template/img/startbutton.gif ) no-repeat 0 -28px;
+}
+.ux-startbutton-left i, .ux-startbutton-right i{
+	display:block;
+    width:10px;
+    overflow:hidden;
+    font-size:1px;
+    line-height:1px;
+}
+.ux-startbutton-center{
+	background:url( /cgi-bin/wg/modules/base/template/img/startbutton.gif ) repeat-x 0 -56px;
+	vertical-align: middle;
+	text-align:center;
+	padding:0;
+	cursor:pointer;
+	white-space:nowrap;
+}
+#ux-taskbar .ux-startbutton-left{
+	background-position:0 0;
+}
+#ux-taskbar .ux-startbutton-right{
+	background-position:0 -30px;
+}
+#ux-taskbar .ux-startbutton-center{
+	background-position:0 -60px;
+}
+#ux-taskbar .x-btn-over .ux-startbutton-left{
+	background-position:0 -270px;
+}
+#ux-taskbar .x-btn-over  .ux-startbutton-right{
+	background-position:0 -300px;
+}
+#ux-taskbar .x-btn-over .ux-startbutton-center{
+	background-position:0 -330px;
+}
+#ux-taskbar .x-btn-click .ux-startbutton-left{
+	background-position:0 -180px;
+}
+#ux-taskbar .x-btn-click  .ux-startbutton-right{
+	background-position:0 -210px;
+}
+#ux-taskbar .x-btn-click .ux-startbutton-center{
+	background-position:0 -240px;
+}
+#ux-taskbar .active-win .ux-startbutton-left{
+	background-position:0 -90px;
+}
+#ux-taskbar .active-win  .ux-startbutton-right{
+	background:url( /cgi-bin/wg/modules/base/template/img/startbutton.gif ) no-repeat 0 -120px;
+}
+#ux-taskbar .active-win .ux-startbutton-center{
+	background:url( /cgi-bin/wg/modules/base/template/img/startbutton.gif ) repeat-x 0 -150px;
+}
+#ux-taskbar .active-win .ux-startbutton-center button {
+    color:#fff;
+}
+
+.x-resizable-proxy{
+    background:#C7DFFC;
+    opacity:.5;
+    -moz-opacity:.5;
+    filter:alpha(opacity=50);
+    border: 1px solid #3b5a82;
+}
+
+
+#x-shortcuts dt {
+    float:left;
+    margin:15px 0 0 15px;
+    clear:left;
+    width:64px;
+    font:normal 10px tahoma,arial,verdana,sans-serif;
+    text-align:center;
+    zoom:1;
+    display:block;
+}
+#x-shortcuts dt a {
+    width:64px;
+    display:block;
+    color:white;
+    text-decoration:none;
+}
+#x-shortcuts dt div {
+    width:100%;
+    color:white;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    cursor:pointer;
+}
+.ext-ie #x-shortcuts dt img {
+    background:transparent !important;
+	opacity: 0.7;
+}
+
+img.x-opacity  { opacity: 0.7 }
+img.x-opacity:hover { opacity: 1.0 }
+
+#x-shortcuts dt a:hover {
+    text-decoration:underline;
+}
+
+
+*/
+
+
+
+.icon-expand-all	{
+    background-image: url(../img/icon/expand16x16.gif) !important;
+}
+.icon-collapse-all	{
+    background-image: url(../img/icon/collapse16x16.gif) !important;
+}
+.icon-reload-all	{
+    background-image: url(../img/icon/reload16x16.png) !important;
+}
+.wg-tab-folder	{
+    background-image: url(../img/icon/folder16x16.png) !important;
+}
+.wg-tab-file	{
+    background-image: url(../img/icon/file16x16.gif) !important;
+}
+.wg-toolbar-add {
+    background-image:url(../img/icon/add16x16.gif) !important;
+}
+.wg-toolbar-reload {
+    background-image:url(../img/icon/reload16x16.png) !important;
+}
+.wg-toolbar-del {
+    background-image:url(../img/icon/delete16x16.gif) !important;
+}
+.wg-toolbar-close {
+    background-image:url(../img/icon/close16x16.gif) !important;
+}
+.wg-toolbar-send {
+    background-image:url(../img/icon/send16x16.gif) !important;
+}
+.wg-toolbar-copy {
+    background-image:url(../img/icon/copy16x16.gif) !important;
+}
+.wg-toolbar-save {
+    background-image:url(../img/icon/save16x16.png) !important;
+}
+.wg-toolbar-fields {
+    background-image:url(../img/icon/fields16x16.png) !important;
+}
+.wg-toolbar-properties {
+    background-image:url(../img/icon/prop16x16.gif) !important;
+}
+.wg-toolbar-field-groups {
+    background-image:url(../img/icon/field_group16x16.png) !important;
+}
+.wg-toolbar-domain {
+    background-image:url(../img/icon/domain16x16.png) !important;
+}
+.wg-toolbar-template, .wg-tab-template {
+    background-image:url(../img/icon/template16x16.gif) !important;
+}
+.wg-toolbar-package, .wg-tab-package {
+    background-image:url(../img/icon/package16x16.png) !important;
+}
+.wg-toolbar-menu, .wg-tab-menu {
+    background-image:url(../img/icon/menu16x16.gif) !important;
+}
+.wg-inherited-field {
+	background-color: #cfc;
+}
+
+
+
+
+.codemirror-iframe body {
+	font-size:10px;
+	background: #ccc;
+	border: 3px solid black;
+}
+/**/
+/*iframe.codemirror-iframe body {*/
+/*	font-size:10px;*/
+/*}*/
+
+/*------------------  NEW CSS ---------------*/
+
+html, body {
+  background-position:center center;
+  background-repeat:no-repeat;
+  border:0 none;
+  font:normal 12px tahoma, arial, verdana, sans-serif;
+  height:100%;
+  margin:0;
+  padding: 0;
+  overflow: hidden;
+  background: #3d71b8;
+}
+
+/* icons */
+.x-btn-medium .icon-qwikioffice { background-image:url(../img/startbutton-icon.gif) !important; }
+.x-btn-large .icon-qwikioffice { background-image:url(../img/startbutton-icon.gif) !important; }
+.icon-user-16 { background-image:url(../img/icon/user16x16.png) !important; }
+.icon-logout-16 { background-image:url(../img/icon/logout16x16.png) !important; }
+/*.x-icon-alert { background-image:url(../images/default/icons/16x16/caution.gif) !important; }*/
+/*.x-icon-information { background-image:url(../images/default/icons/16x16/quote.gif) !important; }*/
+/*.x-icon-waiting { background-image:url(../images/default/icons/16x16/hourglass.gif) !important; }*/
+/*.x-icon-done { background-image:url(../images/default/icons/16x16/clock.gif) !important; }*/
+/*.x-icon-start { background-image:url(../images/default/taskbar/icon-start.gif) !important; }*/
+.ux-start-menu-submenu { background-image:url(../img/icon/folder16x16.png) !important; }
+
+/* transparency */
+.transparent { -moz-opacity:0.8; opacity:.80; filter:alpha(opacity=80); }
+
+/* wallpaper */
+.wallpaper-tile { background-repeat:repeat; background-position:left top; }
+.wallpaper-center { background-position:center; }
+
+/* desktop */
+.x-desktop { border:0 none; height:100%; position:relative; overflow:hidden; width:100%; zoom:1; }
+
+/* taskbar */
+.ux-taskbar {
+	background:transparent none;
+	height:30px;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	position:relative;
+	z-index:8999;
+}
+.ux-taskbar-top { background-position:left bottom; }
+.ux-taskbar .x-border-layout-ct  { background-color:transparent; }
+
+/* taskbar ghost */
+.ux-ghost-taskbar { background:transparent none; margin:0; padding:0; position:absolute; visibility:hidden; width:100%; z-index:100000; }
+.ux-ghost-taskbar-bottom { bottom:0; }
+.ux-ghost-taskbar-top { top:0; }
+
+/* taskbar taskbutton */
+.ux-taskbar .x-btn-tl,
+.ux-taskbar .x-btn-tr,
+.ux-taskbar .x-btn-tc,
+.ux-taskbar .x-btn-ml,
+.ux-taskbar .x-btn-mr,
+.ux-taskbar .x-btn-mc,
+.ux-taskbar .x-btn-bl,
+.ux-taskbar .x-btn-br,
+.ux-taskbar .x-btn-bc { background-position:500px 500px; }
+.ux-taskbar .x-btn-text-icon .x-btn-icon-small-left .x-btn-text,
+.ux-taskbar .x-btn-text-icon .x-btn-icon-medium-left .x-btn-text,
+.ux-taskbar .x-btn-text-icon .x-btn-icon-large-left .x-btn-text { text-align: left; }
+
+.ux-taskbar .x-btn {
+	margin: 1px 0 0px 1px;
+}
+
+/*.ux-taskbar button {*/
+/*	width: 150px;*/
+/*	overflow: hidden; */
+/*	text-align: left;*/
+/*	color: #ffffff;*/
+/*}*/
+
+
+/* taskbar start button */
+.ux-taskbar-start .x-btn { margin-left:4px; }
+.ux-taskbar-start .x-btn-text { font-weight:bold; text-align:left; }
+
+/* quickstart */
+.ux-quickstart-strip-wrap { width:100%; overflow:hidden; position:relative; zoom:1; }
+ul.ux-quickstart-strip { display:block; width:5000px; zoom:1; }
+ul.ux-quickstart-strip li { float:left; margin-left:0px; }
+ul.ux-quickstart-strip li.ux-quickstart-edge { background:transparent !important; border:0 none !important; float:left; font-size:1px !important; line-height:1px !important; margin:0 !important; overflow:hidden; padding:0 !important; width:1px; zoom:1; }
+.ux-quickstart-menubutton-wrap { position:absolute; right:0; top:0px; z-index:10; }
+.ux-quickstart-panel .x-btn-mc em.x-btn-arrow { background-image:none; display:block; padding-right:0; }
+
+/* taskbar taskbutton strip */
+.ux-taskbuttons-strip-wrap { overflow:hidden; position:relative; width:100%; zoom:1; }
+.ux-taskbuttons-strip { display:block; width:5000px; zoom:1; }
+.ux-taskbuttons-strip li { float:left; }
+.ux-taskbuttons-strip li.ux-taskbuttons-edge { background:transparent !important; border:0 none !important; float:left; font-size:1px !important; line-height:1px !important; margin:0 !important; padding:0 !important; overflow:hidden; width:1px; zoom:1; }
+
+/* taskbar taskbutton scroller */
+.x-taskbuttons-scrolling { position:relative; }
+.x-taskbuttons-scrolling .ux-taskbuttons-strip-wrap { margin-left:18px; margin-right:18px;}
+.ux-taskbuttons-scroller-left { background-color:transparent; background-position:-18px 0; background-repeat:no-repeat; cursor:pointer; left:1px; position:absolute; top:0px; width:18px; z-index:10; }
+.ux-taskbuttons-scroller-left-over { background-position:0 0; }
+.ux-taskbuttons-scroller-left-disabled { background-position:-18px 0; cursor:default; filter:alpha(opacity=50); opacity:.5; -moz-opacity:.5; }
+.ux-taskbuttons-scroller-right { background-color:transparent; background-position:0 0; background-repeat:no-repeat; cursor:pointer; position:absolute; right:0; top:0px; width:18px; z-index:10; }
+.ux-taskbuttons-scroller-right-over { background-position:-18px 0; }
+.ux-taskbuttons-scroller-right-disabled { background-position:0 0; cursor:default; filter:alpha(opacity=50); opacity:.5; -moz-opacity:.5; }
+
+/* shortcut button */
+.ux-shortcut-item { height:84px; overflow:hidden; position:absolute; width:64px; }
+.ux-shortcut-item .x-btn-tl,
+.ux-shortcut-item .x-btn-tr,
+.ux-shortcut-item .x-btn-tc,
+.ux-shortcut-item .x-btn-ml,
+.ux-shortcut-item .x-btn-mr,
+.ux-shortcut-item .x-btn-mc,
+.ux-shortcut-item .x-btn-bl,
+.ux-shortcut-item .x-btn-br,
+.ux-shortcut-item .x-btn-bc { background-position:500px 500px; }
+.ux-shortcut-item .x-btn-over .x-btn-tl { background-position:-6px 0; }
+.ux-shortcut-item .x-btn-over .x-btn-tr { background-position:-9px 0; }
+.ux-shortcut-item .x-btn-over .x-btn-tc { background-position:0 -9px; }
+.ux-shortcut-item .x-btn-over .x-btn-ml { background-position:-6px -24px; }
+.ux-shortcut-item .x-btn-over .x-btn-mr { background-position:-9px -24px; }
+.ux-shortcut-item .x-btn-over .x-btn-mc { background-position:0 -2168px; }
+.ux-shortcut-item .x-btn-over .x-btn-bl { background-position:-6px -3px; }
+.ux-shortcut-item .x-btn-over .x-btn-br { background-position:-9px -3px; }
+.ux-shortcut-item .x-btn-over .x-btn-bc { background-position:0 -18px; }
+.ux-shortcut-item .x-btn-text { white-space:normal !important; }
+.ux-shortcut-item .x-btn-icon-large-top .x-btn-text { overflow:hidden; padding-top:48px; }
+.ux-shortcut-item  button { font-size:11px !important; width:100%; }
+/*button.x-btn-text { opacity: 0.7 }*/
+/*button.x-btn-text:hover { opacity: 1; text-decoration:underline }*/
+
+/* start menu */
+.ux-startmenu { background:transparent none; border-color:transparent; border-width:0; }
+.ux-startmenu-tl { background:transparent none no-repeat left top; padding-left:6px; }
+.ux-startmenu-tr { background:transparent none no-repeat right top; padding-right:6px; }
+.ux-startmenu-tc { background:transparent none repeat-x left top; padding-top:6px; }
+.ux-startmenu-tl .ux-startmenu-header { font:bold 11px tahoma,arial,verdana,sans-serif; }
+.ux-startmenu-ml { background:transparent none repeat-y left top; padding-left:6px; }
+.ux-startmenu-mr { background:transparent none repeat-y right top; padding-right:6px; }
+.ux-startmenu-mc { background-color:#fff; border:1px solid; border-color:#99bbe8; font: normal 11px tahoma,arial,helvetica,sans-serif; }
+.ux-startmenu-bl { background:transparent none no-repeat left bottom; padding-left:6px; }
+.ux-startmenu-br { background:transparent none no-repeat right bottom; padding-right:6px; }
+.ux-startmenu-bc { background:transparent none repeat-x left bottom; padding-bottom:6px; }
+.ux-startmenu-nofooter { height:6px; padding:0; }
+.ux-startmenu-bl .ux-startmenu-footer { background-position:12px 6px; background-repeat:no-repeat; color:#15428b; font-size:18px; font-weight:bold; padding:8px 0 1px 48px; }
+.ux-startmenu .ux-menu-app { border-right:1px solid #f0f0f0; float:left; width:60%; }
+.ux-startmenu .ux-menu-tool { float:left; width:39%; }
+.ux-startmenu-tl .ux-startmenu-header { background-position:5px center; background-repeat:no-repeat; font-weight:bold; font-size:12px; padding:5px 0px 5px 25px; }
+
+/* qWikiOffice */
+.ux-taskbar { background-color:#404040 !important; background-image:url(../img/taskbar/bg.gif); }
+.ux-taskbar .x-splitbar-h { background:transparent url(../img/taskbar/split-h.gif) no-repeat 0 0; }
+.ux-taskbar .ux-startbutton .x-btn-mc em.x-btn-arrow { background-image:url("../images/default/taskbar/arrow.gif"); padding-right:11px; }
+.ux-taskbar .ux-startbutton button,
+.ux-taskbar .ux-taskbuttons-panel button { color:#f1f1f1; }
+.ux-taskbar .ux-taskbuttons-panel .x-btn { background:transparent none no-repeat top right; }
+.ux-taskbar .ux-taskbuttons-panel .active-win { background:transparent none no-repeat top right; }
+.ux-taskbar .x-btn-over,
+.ux-taskbar .ux-quickstart-panel .x-btn-over { background:transparent url(../images/default/taskbar/btn-plain-over.gif) no-repeat top right; }
+.ux-taskbar .ux-taskbuttons-panel .x-btn-over { background:transparent url(../images/default/taskbar/btn-over.gif) no-repeat top right; }
+.ux-taskbar-top .x-splitbar-h,
+.ux-taskbar-top .ux-taskbuttons-panel .x-btn,
+.ux-taskbar-top .ux-taskbuttons-panel .active-win,
+.ux-taskbar-top .x-btn-over,
+.ux-taskbar-top .ux-quickstart-panel .x-btn-over,
+.ux-taskbar-top .ux-taskbuttons-panel .x-btn-over { background-position:bottom right; }
+.ux-quickstart-menubutton { background-image:url(../images/default/taskbar/quickstart-menubutton-icon.gif) !important; }
+.ux-taskbuttons-scroller-left { background-image:url(../img/taskbar/scroll-left.gif); margin-top:3px }
+.ux-taskbuttons-scroller-right { background-image:url(../img/taskbar/scroll-right.gif);  margin-top:3px }
+
+/*.ux-taskbar .x-btn-mc {*/
+/*	background:transparent url(../img/taskbutton.gif)  repeat-x scroll 0 -140px*/
+/*}*/
+/*.ux-taskbar .x-btn-mc{*/
+/*	background-position:0 -56px;*/
+/*}*/
+
+/*****  taskbar ******/
+
+.ux-taskbar .ux-taskbuttons-panel .x-btn-ml,
+.ux-taskbar .ux-taskbuttons-panel .x-btn-mr	{
+	font-size:1px;
+    line-height:1px;
+}
+.ux-taskbar .ux-taskbuttons-panel .x-btn-ml i,
+.ux-taskbar .ux-taskbuttons-panel .x-btn-mr i	{
+	display:block;
+    width:4px;
+    overflow:hidden;
+    font-size:1px;
+    line-height:1px;
+}
+.ux-taskbar .ux-taskbuttons-panel .x-btn-ml	{
+	width:4px;
+	height:28px;
+	background:url( ../img/taskbar/taskbutton.gif ) no-repeat 0 0;
+}
+.ux-taskbar .ux-taskbuttons-panel .x-btn-mc	{
+	background:url( ../img/taskbar/taskbutton.gif ) repeat-x 0 -56px;
+	vertical-align: middle;
+	text-align:center;
+	padding:0 5px;
+	cursor:pointer;
+	white-space:nowrap;
+}
+.ux-taskbar .ux-taskbuttons-panel .x-btn-mr	{
+	width:4px;
+	height:28px;
+	background:url( ../img/taskbar/taskbutton.gif ) no-repeat 0 -28px;
+}
+.ux-taskbar .ux-taskbuttons-panel .x-btn-ml	{
+	background-position:0 0;
+}
+.ux-taskbar .ux-taskbuttons-panel .x-btn-mc	{
+	background-position:0 -56px;
+}
+.ux-taskbar .ux-taskbuttons-panel .x-btn-mr	{
+	background-position:0 -28px;
+}
+.ux-taskbar .ux-taskbuttons-panel .x-btn-over .x-btn-ml	{
+	background-position:0 -252px;
+}
+.ux-taskbar .ux-taskbuttons-panel .x-btn-over  .x-btn-mr	{
+	background-position:0 -280px;
+}
+.ux-taskbar .ux-taskbuttons-panel .x-btn-over .x-btn-mc	{
+	background-position:0 -308px;
+}
+.ux-taskbar .ux-taskbuttons-panel  .x-btn-click .x-btn-ml{
+	background-position:0 -168px;
+}
+.ux-taskbar .ux-taskbuttons-panel .x-btn-click  .x-btn-mr{
+	background-position:0 -196px;
+}
+.ux-taskbar .ux-taskbuttons-panel  .x-btn-click .x-btn-mc{
+	background-position:0 -224px;
+}
+.ux-taskbar .ux-taskbuttons-panel  .active-win .x-btn-ml{
+	background-position:0 -84px;
+}
+.ux-taskbar .ux-taskbuttons-panel  .active-win  .x-btn-mr{
+	background:url( ../img/taskbar/taskbutton.gif ) no-repeat 0 -112px;
+}
+.ux-taskbar .ux-taskbuttons-panel  .active-win .x-btn-mc{
+	background:url( ../img/taskbar/taskbutton.gif ) repeat-x 0 -140px;
+}
+.ux-taskbar .ux-taskbuttons-panel .active-win .x-btn-mc button {
+    color:#fff;
+}
+
+/*.x-btn-tc, .x-btn-tl, .x-btn-tr { display:none; }*/
+/*.x-btn-bc, .x-btn-bl, .x-btn-br { display:inline; height:2px; background: transparent none }*/
+
+.x-btn-text-icon .x-btn-icon-large-left .x-btn-text { height: 28px }
